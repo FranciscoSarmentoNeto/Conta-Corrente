@@ -42,8 +42,8 @@ public class App {
         do {
             imprimeMenu();
             opcao = scanner.nextInt();
+            scanner.nextLine();  // Consome a nova linha
             limparTela();
-            scanner.nextLine();  
 
             switch (opcao) {
                 case 0:
@@ -68,8 +68,10 @@ public class App {
                         String senhaDaContaInserida = scanner.nextLine();
                         System.out.print("Insira o valor para depósito: ");
                         float valorDeposito = scanner.nextFloat();
+                        scanner.nextLine();  // Consome a nova linha
                         limparTela();
                         conta.depositar(nomeTitularDaContaPesquisado, cpfTitularDacontaPesquisado, senhaDaContaInserida, valorDeposito);
+                        conta.imprimirComprovanteDeDeposito(valorDeposito);
                         pausar();
                         limparTela();
                     } else {
@@ -89,8 +91,11 @@ public class App {
                         String senhaDaContaInserida = scanner.nextLine();
                         System.out.print("Insira o valor para saque: ");
                         float valorSaque = scanner.nextFloat();
+                        scanner.nextLine();  // Consome a nova linha
                         limparTela();
+                        float taxa = valorSaque * 0.005f;  // Calcula a taxa correta
                         conta.sacar(nomeTitularDaContaPesquisado, cpfTitularDacontaPesquisado, senhaDaContaInserida, valorSaque);
+                        conta.imprimirComprovanteDeSaque(valorSaque, taxa);
                         pausar();
                         limparTela();
                     } else {
@@ -102,11 +107,11 @@ public class App {
                 case 3:
                     if (conta != null) {
                         System.out.println("========== SITUAÇÃO DA CONTA ==========\n");
-                        System.out.println("Insira o nome do titular da conta para vizualizar os dados: ");
+                        System.out.println("Insira o nome do titular da conta para visualizar os dados: ");
                         String nomeTitularDaContaPesquisado = scanner.nextLine();
-                        System.out.println("Insira o CPF do titular da conta para vizualizar os dados: ");
+                        System.out.println("Insira o CPF do titular da conta para visualizar os dados: ");
                         String cpfTitularDacontaPesquisado = scanner.nextLine();
-                        System.out.println("Insira a senha cadastrada pelo titular da conta para vizualizar os dados: ");
+                        System.out.println("Insira a senha cadastrada pelo titular da conta para visualizar os dados: ");
                         String senhaDaContaInserida = scanner.nextLine();
                         limparTela();
                         conta.imprimirContaCorrente(nomeTitularDaContaPesquisado, cpfTitularDacontaPesquisado, senhaDaContaInserida);
