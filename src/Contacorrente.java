@@ -131,7 +131,7 @@ public class Contacorrente {
             e.printStackTrace();
         }
     }
-
+ nao sei
     private String gerarNumeroAleatorio() {
         Random random = new Random();
         return String.format("%09d", random.nextInt(900000000) + 100000000);
